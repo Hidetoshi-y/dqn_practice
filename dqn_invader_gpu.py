@@ -8,6 +8,7 @@ from keras.optimizers import Adam
 from rl.agents.dqn import DQNAgent
 from rl.policy import BoltzmannQPolicy
 from rl.memory import SequentialMemory
+
 #追記1 begin
 from keras import backend as K
 import tensorflow as tf
@@ -58,11 +59,11 @@ dqn.compile(Adam(lr=1e-3), metrics=['mae'])
 
 # fit
 #dqn.fit(env, nb_steps=50000, visualize=True, verbose=2)
-dqn.fit(env, nb_steps=50000, visualize=False, verbose=2)
+dqn.fit(env, nb_steps=500, visualize=False, verbose=2)
 
 # save weught
 dqn.save_weights('dqn_{}_weights.h5f'.format(ENV_NAME), overwrite=True)
 
 # test 5 episodes
-dqn.test(env, nb_episodes=5, visualize=True)
-#dqn.test(env, nb_episodes=5, visualize=False)
+#dqn.test(env, nb_episodes=5, visualize=True)
+dqn.test(env, nb_episodes=5, visualize=False)
